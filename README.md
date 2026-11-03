@@ -14,9 +14,11 @@ Abra http://localhost:5173.
 
 Edite o bloco `CONFIG` no começo de `script.js`. O que ficar vazio não aparece no site.
 
-- `whatsapp`: com DDD, só números.
-- `instagram`: link completo do perfil.
-- `endereco`: texto livre.
+- `whatsapp`: com DDD, só números. Liga o botão do bloco "Conheça meu Instagram", o botão flutuante e o ícone do rodapé.
+- `instagram`: `@usuario` ou link do perfil. Liga o botão do bloco de redes, o item "Redes" do menu e o ícone do rodapé.
+- `endereco`: texto livre, aparece no fim do bloco de redes.
+
+Com WhatsApp e Instagram vazios, o bloco de redes inteiro fica escondido.
 
 ## Como colocar a foto da doutora
 

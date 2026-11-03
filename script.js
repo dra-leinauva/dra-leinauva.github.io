@@ -2,38 +2,47 @@
 const CONFIG = {
   whatsapp: "",   // com DDD, só números. Ex.: "67999998888"
   mensagem: "Olá, Dra. Leinauva! Vim pelo site e gostaria de mais informações.",
-  instagram: "",  // link completo. Ex.: "https://instagram.com/usuario"
+  instagram: "",  // @usuario ou link do perfil. Ex.: "@dra.leinauva"
   endereco: ""    // texto livre. Ex.: "Rua X, 123, Sala 4, Cidade - UF"
 };
 
-(function preencherContato() {
-  const bloco = document.getElementById("contato");
-  let temAlgo = false;
+const reduzirMovimento = window.matchMedia("(prefers-reduced-motion: reduce)");
 
+(function preencherContato() {
   const numero = CONFIG.whatsapp.replace(/\D/g, "");
+  const usuario = CONFIG.instagram.trim()
+    .replace(/^https?:\/\/(www\.)?instagram\.com\//i, "")
+    .replace(/^@/, "")
+    .replace(/[/?#].*$/, "");
+
   if (numero) {
     const completo = numero.length <= 11 ? "55" + numero : numero;
-    const link = document.getElementById("c-whatsapp");
-    link.href = "https://wa.me/" + completo + "?text=" + encodeURIComponent(CONFIG.mensagem);
-    link.hidden = false;
-    temAlgo = true;
+    const link = "https://wa.me/" + completo + "?text=" + encodeURIComponent(CONFIG.mensagem);
+    document.querySelectorAll("[data-zap]").forEach(function (a) {
+      a.href = link;
+      a.hidden = false;
+    });
   }
 
-  if (CONFIG.instagram) {
-    const item = document.getElementById("c-instagram");
-    item.querySelector("a").href = CONFIG.instagram;
-    item.hidden = false;
-    temAlgo = true;
+  if (usuario) {
+    document.querySelectorAll("[data-insta]").forEach(function (a) {
+      a.href = "https://instagram.com/" + usuario;
+      a.hidden = false;
+    });
+    document.querySelectorAll("[data-insta-usuario]").forEach(function (el) {
+      el.textContent = "@" + usuario;
+    });
   }
 
   if (CONFIG.endereco) {
-    const item = document.getElementById("c-endereco");
-    item.textContent = CONFIG.endereco;
-    item.hidden = false;
-    temAlgo = true;
+    const endereco = document.getElementById("c-endereco");
+    endereco.textContent = CONFIG.endereco;
+    endereco.hidden = false;
   }
 
-  bloco.hidden = !temAlgo;
+  const temRedes = Boolean(numero || usuario);
+  document.getElementById("redes").hidden = !temRedes;
+  document.querySelectorAll("[data-redes]").forEach(function (a) { a.hidden = !temRedes; });
 })();
 
 // Estrelas do céu: posição fixa a cada visita (sequência pseudoaleatória com semente), só decoração.
@@ -56,13 +65,62 @@ const CONFIG = {
   });
 })();
 
-// O sol sobe conforme a página passa pelo horizonte. É o único movimento do site.
+// Menu que ganha fundo ao rolar, barra de progresso do dia e botão flutuante do WhatsApp.
+(function acompanharRolagem() {
+  const topo = document.querySelector(".topo");
+  const barra = document.querySelector(".progresso");
+  const fab = document.querySelector(".fab");
+  const hero = document.getElementById("inicio");
+  let aguardando = false;
+
+  function atualizar() {
+    aguardando = false;
+    const rolado = window.scrollY;
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    topo.classList.toggle("rolou", rolado > 40);
+    barra.style.setProperty("--p", total > 0 ? Math.min(1, rolado / total).toFixed(4) : 0);
+    fab.classList.toggle("fab-visivel", rolado > hero.offsetHeight * 0.7);
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!aguardando) {
+      aguardando = true;
+      requestAnimationFrame(atualizar);
+    }
+  }, { passive: true });
+  window.addEventListener("resize", atualizar);
+  atualizar();
+})();
+
+// Os blocos entram em sequência uma única vez, quando chegam à tela.
+(function entrarEmCena() {
+  if (reduzirMovimento.matches || !("IntersectionObserver" in window)) return;
+
+  const grupos = [".lista-sinais li", ".areas .area", ".redes"];
+  const observador = new IntersectionObserver(function (entradas) {
+    entradas.forEach(function (entrada) {
+      if (entrada.isIntersecting) {
+        entrada.target.classList.add("visto");
+        observador.unobserve(entrada.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  grupos.forEach(function (seletor) {
+    document.querySelectorAll(seletor).forEach(function (el, i) {
+      el.classList.add("revelar");
+      el.style.setProperty("--i", i % 4);
+      observador.observe(el);
+    });
+  });
+})();
+
+// O sol sobe conforme a página passa pelo horizonte.
 (function nascerDoSol() {
   const horizonte = document.querySelector(".horizonte");
-  const reduzir = window.matchMedia("(prefers-reduced-motion: reduce)");
   if (!horizonte) return;
 
-  if (reduzir.matches) {
+  if (reduzirMovimento.matches) {
     horizonte.style.setProperty("--subida", "0.85");
     return;
   }
