@@ -36,6 +36,26 @@ const CONFIG = {
   bloco.hidden = !temAlgo;
 })();
 
+// Estrelas do céu: posição fixa a cada visita (sequência pseudoaleatória com semente), só decoração.
+(function estrelas() {
+  let semente = 7;
+  const aleatorio = () => (semente = (semente * 16807) % 2147483647) / 2147483647;
+
+  document.querySelectorAll("[data-estrelas]").forEach(function (ceu) {
+    const total = Number(ceu.dataset.estrelas) || 0;
+    for (let i = 0; i < total; i++) {
+      const estrela = document.createElement("i");
+      const tamanho = 1 + aleatorio() * 2.2;
+      estrela.style.left = (aleatorio() * 100).toFixed(1) + "%";
+      estrela.style.top = (aleatorio() * 100).toFixed(1) + "%";
+      estrela.style.setProperty("--t", tamanho.toFixed(1) + "px");
+      estrela.style.setProperty("--d", (2 + aleatorio() * 3).toFixed(1) + "s");
+      estrela.style.setProperty("--a", (-aleatorio() * 5).toFixed(1) + "s");
+      ceu.appendChild(estrela);
+    }
+  });
+})();
+
 // O sol sobe conforme a página passa pelo horizonte. É o único movimento do site.
 (function nascerDoSol() {
   const horizonte = document.querySelector(".horizonte");
