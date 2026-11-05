@@ -33,3 +33,9 @@ Com WhatsApp e Instagram vazios, o bloco de redes inteiro fica escondido.
 - Cidade e registro profissional (CRM/UF): deixados de fora por decisão do cliente.
 - Domínio próprio (recomendado: Registro.br, cerca de R$ 40 por ano).
 - Aviso do rodapé ("não substitui consulta médica"): sugestão nossa, a doutora precisa aprovar.
+
+## Telemedicina
+
+O site divulga o atendimento por telemedicina com foco na saúde da mulher: selo e botão na abertura, seção própria (`#telemedicina`) e botões de contato. Os textos da seção foram escritos por nós a partir dos textos da doutora (escuta cuidadosa, avaliação individualizada, rotina corrida) e precisam da aprovação dela. Confirmar com a doutora: se atende todo o Brasil, por qual plataforma e como funciona o agendamento.
+
+Atenção: a publicidade médica de telemedicina costuma exigir nome completo, CRM/UF e RQE (se houver) no material. Hoje o site está sem CRM por decisão do cliente; vale revisar isso com a doutora.

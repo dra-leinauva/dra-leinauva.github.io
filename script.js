@@ -22,6 +22,12 @@ const reduzirMovimento = window.matchMedia("(prefers-reduced-motion: reduce)");
       a.href = link;
       a.hidden = false;
     });
+
+    const cta = document.getElementById("cta-hero");
+    cta.href = link;
+    cta.target = "_blank";
+    cta.rel = "noopener";
+    cta.textContent = "Agendar consulta online";
   }
 
   if (usuario) {
@@ -96,7 +102,7 @@ const reduzirMovimento = window.matchMedia("(prefers-reduced-motion: reduce)");
 (function entrarEmCena() {
   if (reduzirMovimento.matches || !("IntersectionObserver" in window)) return;
 
-  const grupos = [".lista-sinais li", ".areas .area", ".redes"];
+  const grupos = [".lista-sinais li", ".areas .area", ".telemed-pontos li", ".redes"];
   const observador = new IntersectionObserver(function (entradas) {
     entradas.forEach(function (entrada) {
       if (entrada.isIntersecting) {
