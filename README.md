@@ -36,6 +36,6 @@ Com WhatsApp e Instagram vazios, o bloco de redes inteiro fica escondido.
 
 ## Telemedicina
 
-O site divulga o atendimento por telemedicina com foco na saúde da mulher: selo e botão na abertura, seção própria (`#telemedicina`) e botões de contato. Os textos da seção foram escritos por nós a partir dos textos da doutora (escuta cuidadosa, avaliação individualizada, rotina corrida) e precisam da aprovação dela. Confirmar com a doutora: se atende todo o Brasil, por qual plataforma e como funciona o agendamento.
+O site divulga o atendimento por telemedicina com foco na saúde da mulher: selo e botão na abertura, seção própria (`#telemedicina`) e botões de contato. Os textos da seção foram escritos por nós a partir dos textos da doutora (escuta cuidadosa, avaliação individualizada, rotina corrida) e precisam da aprovação dela. Confirmado pelo cliente: atende todo o Brasil, só por telemedicina. Falta saber qual plataforma usa e como funciona o agendamento.
 
 Atenção: a publicidade médica de telemedicina costuma exigir nome completo, CRM/UF e RQE (se houver) no material. Hoje o site está sem CRM por decisão do cliente; vale revisar isso com a doutora.
