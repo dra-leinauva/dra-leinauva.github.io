@@ -778,16 +778,15 @@ section[id] { scroll-margin-top: 3rem; }
 .no { display: grid; justify-items: center; gap: 0.9rem; text-align: center; }
 .no span { font-family: var(--serif); font-style: italic; font-size: 1.2rem; color: var(--claro); }
 
-.no-arco {
-  position: relative;
+.no-circulo {
   display: grid;
   place-items: center;
-  width: clamp(6.5rem, 22vw, 9.5rem);
-  aspect-ratio: 3 / 4;
-  border: 1px solid rgba(217, 188, 132, 0.7);
-  border-bottom: 0;
-  border-radius: 999px 999px 0 0;
-  background: linear-gradient(180deg, rgba(243, 236, 241, 0.08), rgba(243, 236, 241, 0.02));
+  width: clamp(5.5rem, 19vw, 8rem);
+  aspect-ratio: 1;
+  border: 1px solid rgba(217, 188, 132, 0.75);
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 35%, rgba(243, 236, 241, 0.14), rgba(243, 236, 241, 0.03));
+  box-shadow: 0 0 0 0.5rem rgba(217, 188, 132, 0.1), 0 0 0 1rem rgba(217, 188, 132, 0.05);
   color: var(--ouro-claro);
 }
 .no-voce .icone { width: 2.2rem; height: 2.2rem; }
@@ -795,7 +794,7 @@ section[id] { scroll-margin-top: 3rem; }
   font-family: var(--serif);
   font-style: italic;
   font-weight: 500;
-  font-size: 2.4rem;
+  font-size: 2.1rem;
   letter-spacing: 0.02em;
   color: var(--claro);
 }
@@ -805,7 +804,7 @@ section[id] { scroll-margin-top: 3rem; }
   flex: 1 1 3rem;
   max-width: 8rem;
   height: 1px;
-  margin-bottom: 2.4rem;
+  margin: 0 0.75rem 3.1rem;
   background: repeating-linear-gradient(90deg, rgba(217, 188, 132, 0.8) 0 5px, transparent 5px 10px);
 }
 .fio::before,
@@ -820,6 +819,17 @@ section[id] { scroll-margin-top: 3rem; }
 }
 .fio::before { left: -3px; }
 .fio::after { right: -3px; }
+.fio i {
+  position: absolute;
+  top: -2px;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--claro);
+  animation: viajar 3s ease-in-out infinite alternate;
+}
+@keyframes viajar { from { left: 0; } to { left: calc(100% - 5px); } }
 
 @media (min-width: 900px) {
   .telemed-grade { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 4.5rem; }
@@ -1023,6 +1033,6 @@ section[id] { scroll-margin-top: 3rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero h1, .hero-texto, .selo, .hero-acoes, .sol-janela, .descer span { animation: none; }
+  .hero h1, .hero-texto, .selo, .hero-acoes, .sol-janela, .descer span, .fio i { animation: none; }
   .fab, .botao, .rede, .topo { transition: none; }
 }
