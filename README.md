@@ -23,7 +23,7 @@ Com WhatsApp e Instagram vazios, o bloco de redes inteiro fica escondido.
 ## Como colocar a foto da doutora
 
 1. Salve a foto em `public/images/dra-leinauva.webp` (largura máxima de 1600 px).
-2. Em `index.html`, troque o `<div class="arco">...</div>` por uma `<img>` com `class="arco"`, `src="public/images/dra-leinauva.webp"` e `alt="Dra. Leinauva Tolentino"`, e em `style.css` acrescente `object-fit: cover` à regra `.arco`.
+2. Em `index.html`, troque o `<div class="arco">...</div>` por uma `<img>` com `class="arco"` (retrato vertical, proporção 4:5), `src="public/images/dra-leinauva.webp"` e `alt="Dra. Leinauva Tolentino"`, e em `style.css` acrescente `object-fit: cover` à regra `.arco`.
 
 ## Pendências de conteúdo
 

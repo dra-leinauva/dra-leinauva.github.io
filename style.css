@@ -509,16 +509,14 @@ section[id] { scroll-margin-top: 3rem; }
 
 .retrato-arcos {
   position: relative;
-  width: min(calc(100% - 2rem), 22rem);
-  margin: 1rem auto 0 1rem;
+  width: min(calc(100% - 1rem), 22rem);
+  margin: 0;
 }
 .retrato-arcos::before {
   content: "";
   position: absolute;
-  inset: -1rem 1rem 0 -1rem;
+  inset: 1rem -1rem -1rem 1rem;
   border: 1px solid var(--ouro);
-  border-bottom: 0;
-  border-radius: 999px 999px 0 0;
   pointer-events: none;
 }
 
@@ -528,8 +526,10 @@ section[id] { scroll-margin-top: 3rem; }
   place-items: center;
   width: 100%;
   aspect-ratio: 4 / 5;
-  border-radius: 999px 999px 0 0;
-  background: linear-gradient(180deg, #3E2C55 0%, #6B5079 60%, #A47B8B 100%);
+  border-radius: 2px;
+  background:
+    radial-gradient(circle at 50% 100%, rgba(217, 188, 132, 0.5) 0%, transparent 55%),
+    linear-gradient(180deg, #3E2C55 0%, #6B5079 60%, #A47B8B 100%);
   color: var(--claro);
   font-family: var(--serif);
   font-style: italic;
@@ -542,12 +542,10 @@ section[id] { scroll-margin-top: 3rem; }
   position: absolute;
   inset: 0.7rem;
   border: 1px solid rgba(243, 236, 241, 0.35);
-  border-bottom: 0;
-  border-radius: 999px 999px 0 0;
 }
 
 .retrato figcaption {
-  margin: 1.25rem 0 0 1rem;
+  margin: 2.25rem 0 0;
   font-family: var(--serif);
   font-style: italic;
   font-size: 1.25rem;
