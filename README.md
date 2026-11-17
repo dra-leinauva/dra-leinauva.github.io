@@ -33,7 +33,7 @@ Para trocar uma foto, substitua o arquivo mantendo o nome. O CRM entra em `CONFI
 ## Pendências de conteúdo
 
 - Confirmar com a doutora que a foto `consulta-online.jpg` é uma foto real dela (parece retocada ou gerada por IA).
-- CRM: número recebido (37272), falta confirmar o estado (UF).
+- CRM: publicado como "CRM 37272-MD", exatamente como o cliente enviou. "MD" não é sigla de estado; vale conferir no registro do CFM.
 - Logo, se existir (hoje o nome aparece em tipografia).
 - WhatsApp, Instagram e endereço do consultório.
 - Cidade e registro profissional (CRM/UF): deixados de fora por decisão do cliente.

@@ -4,7 +4,7 @@ const CONFIG = {
   mensagem: "Olá, Dra. Leinauva! Vim pelo site e gostaria de mais informações.",
   instagram: "",  // @usuario ou link do perfil. Ex.: "@dra.leinauva"
   endereco: "",   // texto livre. Ex.: "Rua X, 123, Sala 4, Cidade - UF"
-  crm: ""       // número e estado, e o RQE se houver. Ex.: "CRM-MS 12345"
+  crm: "CRM 37272-MD"     // número e estado, e o RQE se houver. Ex.: "CRM-MS 12345"
 };
 
 const reduzirMovimento = window.matchMedia("(prefers-reduced-motion: reduce)");
