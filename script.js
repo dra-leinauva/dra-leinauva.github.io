@@ -3,7 +3,8 @@ const CONFIG = {
   whatsapp: "",   // com DDD, só números. Ex.: "67999998888"
   mensagem: "Olá, Dra. Leinauva! Vim pelo site e gostaria de mais informações.",
   instagram: "",  // @usuario ou link do perfil. Ex.: "@dra.leinauva"
-  endereco: ""    // texto livre. Ex.: "Rua X, 123, Sala 4, Cidade - UF"
+  endereco: "",   // texto livre. Ex.: "Rua X, 123, Sala 4, Cidade - UF"
+  crm: ""       // número e estado, e o RQE se houver. Ex.: "CRM-MS 12345"
 };
 
 const reduzirMovimento = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -46,6 +47,13 @@ const reduzirMovimento = window.matchMedia("(prefers-reduced-motion: reduce)");
     endereco.hidden = false;
   }
 
+  if (CONFIG.crm) {
+    document.querySelectorAll("[data-crm]").forEach(function (el) {
+      el.textContent = CONFIG.crm;
+      el.hidden = false;
+    });
+  }
+
   const temRedes = Boolean(numero || usuario);
   document.getElementById("redes").hidden = !temRedes;
   document.querySelectorAll("[data-redes]").forEach(function (a) { a.hidden = !temRedes; });
@@ -67,6 +75,36 @@ const reduzirMovimento = window.matchMedia("(prefers-reduced-motion: reduce)");
       estrela.style.setProperty("--d", (2 + aleatorio() * 3).toFixed(1) + "s");
       estrela.style.setProperty("--a", (-aleatorio() * 5).toFixed(1) + "s");
       ceu.appendChild(estrela);
+    }
+  });
+})();
+
+// Carrossel de fotos: setas, contagem e rolagem por toque (o trilho funciona sem script).
+(function carrossel() {
+  const trilho = document.querySelector(".galeria-trilho");
+  if (!trilho) return;
+  const fotos = trilho.children;
+  const atual = document.querySelector("[data-galeria-atual]");
+
+  function indice() {
+    return Math.round(trilho.scrollLeft / trilho.clientWidth);
+  }
+
+  document.querySelectorAll("[data-galeria]").forEach(function (botao) {
+    botao.addEventListener("click", function () {
+      const destino = (indice() + Number(botao.dataset.galeria) + fotos.length) % fotos.length;
+      trilho.scrollTo({ left: destino * trilho.clientWidth });
+    });
+  });
+
+  trilho.addEventListener("scroll", function () {
+    atual.textContent = indice() + 1;
+  }, { passive: true });
+
+  trilho.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+      e.preventDefault();
+      trilho.scrollTo({ left: (indice() + (e.key === "ArrowRight" ? 1 : -1) + fotos.length) % fotos.length * trilho.clientWidth });
     }
   });
 })();

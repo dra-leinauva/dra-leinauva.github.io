@@ -20,14 +20,20 @@ Edite o bloco `CONFIG` no começo de `script.js`. O que ficar vazio não aparece
 
 Com WhatsApp e Instagram vazios, o bloco de redes inteiro fica escondido.
 
-## Como colocar a foto da doutora
+## Fotos
 
-1. Salve a foto em `public/images/dra-leinauva.webp` (largura máxima de 1600 px).
-2. Em `index.html`, troque o `<div class="arco">...</div>` por uma `<img>` com `class="arco"` (retrato vertical, proporção 4:5), `src="public/images/dra-leinauva.webp"` e `alt="Dra. Leinauva Tolentino"`, e em `style.css` acrescente `object-fit: cover` à regra `.arco`.
+As fotos ficam em `public/images/` (JPG, até 1500 px de largura, já leves):
+
+- `consultorio.jpg`: retrato principal, na abertura.
+- `poltrona.jpg`, `em-pe.jpg`, `estetoscopio.jpg`: carrossel do bloco "Quem sou" (em `index.html`, dentro de `.galeria-trilho`; se mudar a quantidade, ajuste o "/ 3" da contagem).
+- `consulta-online.jpg`: círculo da seção de telemedicina.
+
+Para trocar uma foto, substitua o arquivo mantendo o nome. O CRM entra em `CONFIG.crm` no `script.js` (ex.: `"CRM-MS 12345"`) e aparece na abertura, na assinatura e no rodapé.
 
 ## Pendências de conteúdo
 
-- Foto da doutora (hoje há um monograma "LT" no lugar).
+- Confirmar com a doutora que a foto `consulta-online.jpg` é uma foto real dela (parece retocada ou gerada por IA).
+- CRM: número recebido (37272), falta confirmar o estado (UF).
 - Logo, se existir (hoje o nome aparece em tipografia).
 - WhatsApp, Instagram e endereço do consultório.
 - Cidade e registro profissional (CRM/UF): deixados de fora por decisão do cliente.
